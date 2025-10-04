@@ -1,27 +1,75 @@
-import React from 'react'
+import { useState } from "react"
+import { Link, useNavigate } from "react-router-dom";
 
-export const Login = () => {
-  return (
-    <div className='bg-orange-500 h-screen items-center justify-center flex'>
-      <div className='bg-black p-8 rounded-lg shadow-md w-full max-w-sm justify-center items-center'>
-        <p className='text-white'>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Cumque hic molestiae
-           consequuntur eum a accusantium ipsum amet dolores voluptas dolore. Repellendus
-            impedit ducimus molestias consequuntur, dolorem quas non obcaecati, deserunt
-             sapiente magni unde aspernatur praesentium accusamus accusantium amet tempora.
-              Inventore illo atque, ipsam corrupti laudantium itaque delectus, vel sapiente,
-               fugiat repudiandae dignissimos dolorem necessitatibus mollitia temporibus
-                numquam possimus soluta non tenetur qui voluptas. Totam veniam eveniet impedit
-                 quisquam minus debitis?
-        </p>
-          <button className="px-30 py-4 bg-orange-400 ml-5 mt-5 font-semibold rounded-xl shadow-lg">Pintar?
-          </button>
-          <button className="px-6 py-3 text-white ml-25 font-semibold rounded-xl shadow-lg transition">
-            belum pintar?
-          </button>
+function Login () {
+    const [formdata, setFormdata] = useState({
+        email:"",
+        password:"",
+    })
+    const navigate = useNavigate ()
 
+    const handleChange =(e) => {
+        setFormdata({ ...formdata, [e.target.name]: e.target.value});
+    };
+    const handleSubmit = (e) => {
+        e.preventDefault();
+
+    alert("Login berhasil!");
+    navigate("/D");
+  };
+  
+
+    return (
+
+        <div className="flex items-center justify-center min-h-screen h-14 bg-no-repeat bg-center bg-cover"
+        style={{ backgroundImage: "url('https://i.pinimg.com/1200x/13/41/45/13414519583c03a8576b45d6171c11c9.jpg')"}}>
+      <div className="bg-white p-8 rounded-lg shadow-md w-full max-w-sm opacity-50">
+        <h1 className="text-2xl font-bold text-center mb-6">Login</h1>
+        <form onSubmit={handleSubmit}>
+            <div className="mb-4">
+                <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="email">
+                     Email
+                </label>
+                <input 
+                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" 
+                id="email"
+                type="text"
+                name="email"
+                value={formdata.email}
+                onChange={handleChange}
+                placeholder="Enter Email"
+                required
+                />
+            </div>
+            <div className="mb-4">
+                <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="Password">
+                     Password
+                </label>
+                <input 
+                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" 
+                id="password"
+                type="password"
+                name="password"
+                value={formdata.password}
+                onChange={handleChange}
+                placeholder="Enter Password"
+                required
+                />
+            </div>
+             <div className="flex flex-col items-center gap-2 justify-between">
+              <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
+                Daftar
+              </button>
+              <button>
+                <Link to="/R" className="inline-block align-baseline text-black opacity-50 font-bold text-sm bg-white">
+              Belum punya akun?Daftar
+              </Link>
+              </button>
+            </div>
+        </form>      
       </div>
     </div>
-  )
+ )
 }
 
-export default Login
+export default Login;
