@@ -2,22 +2,27 @@ import React from "react";
 import Lbinus from "../../public/Lbinus.jpg";
 import { Link } from "react-router-dom";
 
-
 function Homepage() {
   return (
     <div className="min-h-screen bg-gradient-to-r from-sky-400 to-blue-600">
       <div className="bg-blue-600 rounded-b-3xl p-4 shadow-lg grid-cols-3 gap-6">
         <div className="flex items-center gap-3">
-            <img src={Lbinus} alt="Logo" className="w-13 h-13 rounded-full" />
-            <div>
-              <h1 className="sm:text-2xl text-2xl font-bold ">
-                SMK BINA NUSANTARA
-              </h1>
-            </div>
+          <img src={Lbinus} alt="Logo" className="w-13 h-13 rounded-full" />
+          <div>
+            <h1 className="sm:text-2xl text-2xl font-bold ">
+              SMK BINA NUSANTARA
+            </h1>
           </div>
+        </div>
       </div>
       <div className="flex gap-6 scroll-auto">
-        <div className="mt-12 ml-20 bg-white p-8 rounded-lg shadow-md w-full max-w-sm">
+        <div
+          className="mt-12 ml-20 p-8 rounded-lg shadow-md w-full max-w-sm"
+          style={{
+            backgroundImage:
+              "url('https://i.pinimg.com/736x/fa/13/eb/fa13ebd5ff018ed9202b505518aea04f.jpg')",
+          }}
+        >
           <img
             src={Lbinus}
             alt="L"
@@ -28,12 +33,12 @@ function Homepage() {
             Selamat Datang di
             <br /> SMK Bina Nusantara
           </h1>
-          <p className="mb-6 text-lg">
-            Penerimaan Peserta Didik Baru <br />
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique
-            earum, quidem nisi ipsam molestiae, maiores cum ipsum esse provident
-            dolore molestias tenetur magni repudiandae, in nesciunt? Temporibus
-            nulla expedita labore.
+          <p className="mb-6 text-lg font-semibold">
+            Penerimaan Peserta Didik Baru <br /> <span className="font-normal">
+            Sekolah kami membuka pendaftaran siswa baru tahun ajaran 2025/2026.
+            Dapatkan kesempatan belajar dalam lingkungan yang unggul dan
+            berkarakter. Daftarkan segera, tempat terbatas!
+            </span>
           </p>
 
           <Link to="/F">
@@ -44,7 +49,7 @@ function Homepage() {
         </div>
         <div className="grid grid-cols-1 gap-6 max-w-4xl mx-auto px-4 w-2/3 mt-10">
           <h1 className="text-5xl font-bold text-center">Jurusan</h1>
-          <div className="p-4 border-4 border-black rounded-lg shadow-md">
+          <div className="p-4 border-3 border-black rounded-lg shadow-md">
             <h2 className="text-lg font-bold mb-2 text-white">TKJ</h2>
             <p className="text-white">
               Lorem ipsum dolor sit amet consectetur, adipisicing elit.
@@ -53,7 +58,7 @@ function Homepage() {
             </p>
           </div>
 
-          <div className="p-4 border-4 border-black rounded-lg shadow-md">
+          <div className="p-4 border-3 border-black rounded-lg shadow-md">
             <h2 className="text-lg font-bold mb-2 text-white">TSM</h2>
             <p className="text-white">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita,
@@ -62,7 +67,7 @@ function Homepage() {
             </p>
           </div>
 
-          <div className="p-4 border-4 border-black rounded-lg shadow-md">
+          <div className="p-4 border-3 border-black rounded-lg shadow-md">
             <h2 className="text-lg font-bold mb-2 text-white">AKL</h2>
             <p className="text-white">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam nam
@@ -71,7 +76,7 @@ function Homepage() {
             </p>
           </div>
 
-          <div className="p-4 border-4 border-black rounded-lg shadow-md">
+          <div className="p-4 border-3 border-black rounded-lg shadow-md">
             <h2 className="text-lg font-bold mb-2 text-white">TB</h2>
             <p className="text-white">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex
@@ -115,17 +120,18 @@ function Homepage() {
       </div>
       <div className="py-10 px-10">
         <p className=" bg-gray-300 shadow-lg p-10 rounded-2xl">
-          Mengisi formulir pendaftaran secara online/offline.
-          <br /> Fotokopi Kartu Keluarga (KK) dan menunjukkan aslinya. 
-          <br />Fotokopi Akte Kelahiran.
-          <br /> Pas foto terbaru ukuran 3×4 (4 lembar).
-          <br /> Fotokopi KTP orang tua/wali.
-          <br /> Bukti kelulusan dari sekolah asal (SKL/Ijazah).
-          <br /> Nilai rapor semester tertentu (misalnya kelas 4–6 SD untuk masuk SMP, atau kelas 7–9 SMP untuk masuk SMA/SMK).
-          <br /> Fotokopi Ijazahb atau Surat Keterangan Lulus (SKL) dari sekolah asal.
-          <br /> Fotokopi SHUN/Rapor (semester terakhir sesuai jenjang). Fotokopi Kartu NISN (Nomor Induk Siswa Nasional).
-          <br /> Fotokopi Kartu BPJS/KIS (kadang diminta untuk data kesehatan). 
-          <br /> Surat Keterangan Sehat dari Puskesmas/RS (beberapa sekolah menambahkan).
+          ● Mengisi formulir pendaftaran secara online/offline.
+          <br />● Fotokopi Kartu Keluarga (KK) dan menunjukkan aslinya.
+          <br />● Fotokopi Akte Kelahiran.
+          <br />● Pas foto terbaru ukuran 3×4 (4 lembar).
+          <br />● Fotokopi KTP orang tua/wali.
+          <br />● Bukti kelulusan dari sekolah asal (SKL/Ijazah).
+          <br />● Nilai rapor semester tertentu (misalnya kelas 4–6 SD untuk masuk SMP, atau kelas 7–9 SMP untuk masuk SMA/SMK).
+          <br />● Fotokopi Ijazah atau Surat Keterangan Lulus (SKL) dari sekolah asal.
+          <br />● Fotokopi SHUN/Rapor (semester terakhir sesuai jenjang). 
+          <br />● Fotokopi Kartu NISN (Nomor Induk Siswa Nasional).
+          <br />● Fotokopi Kartu BPJS/KIS.
+          <br />● Surat Keterangan Sehat dari Puskesmas/RS.
         </p>
       </div>
       <div className="ml-150">

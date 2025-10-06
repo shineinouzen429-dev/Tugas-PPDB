@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { Link, useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 function Login () {
     const [formdata, setFormdata] = useState({
@@ -14,8 +15,13 @@ function Login () {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-    alert("Login berhasil!");
-    navigate("/D");
+     Swal.fire({
+  title: "Login Berhasill!",
+  icon: "success",
+  draggable: true
+}).then(()=>{
+   navigate("/D");
+})
   };
   
 
@@ -23,7 +29,7 @@ function Login () {
 
         <div className="flex items-center justify-center min-h-screen h-14 bg-no-repeat bg-center bg-cover"
         style={{ backgroundImage: "url('https://i.pinimg.com/1200x/13/41/45/13414519583c03a8576b45d6171c11c9.jpg')"}}>
-      <div className="bg-white p-8 rounded-lg shadow-md w-full max-w-sm opacity-50">
+      <div className=" p-8 rounded-lg shadow-md w-full max-w-sm ">
         <h1 className="text-2xl font-bold text-center mb-6">Login</h1>
         <form onSubmit={handleSubmit}>
             <div className="mb-4">
@@ -61,7 +67,7 @@ function Login () {
                 Daftar
               </button>
               <button>
-                <Link to="/R" className="inline-block align-baseline text-black opacity-50 font-bold text-sm bg-white">
+                <Link to="/R" className="inline-block align-baseline text-black hover:text-white font-bold text-sm">
               Belum punya akun?Daftar
               </Link>
               </button>
