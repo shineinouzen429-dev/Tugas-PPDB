@@ -3,10 +3,21 @@
     {
       "id": "aa98",
       "nama_lengkap": "ayyas assadullah bilqis",
-      "asal_sekolah": "mts",
+      "asal_sekolah": "mts uswatun",
       "nik": "83432942932384",
       "nisn": "434826",
-      "nilai": "99,9"
+      "nilai": "88"
     }
-  ]
+  ],
+  "zonasi": [
+    {
+      "id": "2b3c",
+      "nama_lengkap": "ayyas assadullah bilqis",
+      "alamat": "krapyak subali",
+      "jarak": "500meter",
+      "nisn": "434826",
+      "nilai": "100"
+    }
+  ],
+  "afirmasi": []
 }

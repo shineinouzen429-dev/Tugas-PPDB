@@ -4,14 +4,14 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import Swal from "sweetalert2";
 
-function Editmenu1() {
+function Editmenu3() {
     const { id } = useParams();
     const navigate = useNavigate();
 
     const [formData, setFormData] = useState({
         nama_lengkap: "",
-        asal_sekolah: "",
-        nik: "",
+        keterangan_afirmasi: "",
+        bukti_dokumen: "",
         nisn:"",
         nilai:""
     });
@@ -20,7 +20,7 @@ function Editmenu1() {
     useEffect(() => {
         const fetchData = async () => {
         try {
-            const res = await axios.get(`http://localhost:5000/prestasi/${id}`);
+            const res = await axios.get(`http://localhost:5000/afirmasi/${id}`);
             const data = Array.isArray(res.data) ? res.data[0]
             : res.data;
             setFormData(data)
@@ -55,10 +55,10 @@ function Editmenu1() {
   }).then(async (result) => {  
     if (result.isConfirmed) {
       try {
-        await axios.put(`http://localhost:5000/prestasi/${id}`, formData);
+        await axios.put(`http://localhost:5000/afirmasi/${id}`, formData);
 
         Swal.fire("Saved!", "", "success");
-        navigate("/M1");
+        navigate("/M3");
       } catch (err) {
         console.error("Gagal mengupdate data:", err);
         Swal.fire({
@@ -91,22 +91,22 @@ function Editmenu1() {
                 />
                </div>
               <div className="mb-4">
-                <label htmlFor="asal_sekolah">asal_sekolah: </label>
+                <label htmlFor="keterangan_afirmasi">keterangan_afirmasi: </label>
                 <input
-                  id="asal_sekolah"
-                  name="asal_sekolah"
+                  id="keterangan_afirmasi"
+                  name="keterangan_afirmasi"
                   type="text"
-                  value={formData.asal_sekolah}
+                  value={formData.keterangan_afirmasi}
                   onChange={handleChange}
                 />
                </div>
               <div className="mb-4">
-                <label htmlFor="nik">nik: </label>
+                <label htmlFor="bukti_dokumen">bukti_dokumen: </label>
                 <input
-                  id="nik"
-                  name="nik"
+                  id="bukti_dokumen"
+                  name="bukti_dokumen"
                   type="text"
-                  value={formData.nik}
+                  value={formData.bukti_dokumen}
                   onChange={handleChange}
                 />
              </div>
@@ -153,4 +153,4 @@ function Editmenu1() {
 }
 
 
-export default Editmenu1
+export default Editmenu3

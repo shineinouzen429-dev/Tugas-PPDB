@@ -1,162 +1,122 @@
-import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Swal from "sweetalert2";
+import Sidnav from "../Component/Sidnav";
 
 function Menu1() {
-  const [formData, setFormData] = useState({
-    nama_lengkap: "",
-    asal_sekolah: "",
-    nik: "",
-    nisn: "",
-    nilai: "",
-  });
-
-  const [loading, setLoading] = useState(false);
+  const [prestasi, setPrestasi] = useState([]);
+  const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
 
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get("http://localhost:5000/prestasi");
+        setPrestasi(response.data);
+      } catch (error) {
+        console.error("Gagal ambil data prestasi:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  const handleDelete = async (id) => {
+    Swal.fire({
+      title: "Yakin hapus?",
+      text: "Data akan hilang permanen!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonText: "Ya, hapus!",
+      cancelButtonText: "Batal",
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        try {
+          await axios.delete(`http://localhost:5000/prestasi/${id}`);
+          const newData = prestasi.filter((item) => item.id !== id);
+          setPrestasi(newData);
+          Swal.fire("Deleted!", "Data berhasil dihapus.", "success");
+        } catch (err) {
+          console.error("Gagal menghapus data:", err);
+          Swal.fire("Error!", "Gagal menghapus data.", "error");
+        }
+      }
+    });
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setLoading(true);
 
-    try {
-      const response = await axios.post("http://localhost:5000/prestasi", formData);
-
-      console.log("Respon server:", response.data);
-      Swal.fire({
-        title: "Yatta, Berhasil",
-        icon: "success",
-        draggable: true,
-      });
-
-     
-      setFormData({
-        nama_lengkap: "",
-        asal_sekolah: "",
-        nik: "",
-        nisn: "",
-        nilai: "",
-      });
-
-      navigate("/D"); 
-    } catch (error) {
-      console.error("Error saat menambahkan data:", error);
-      Swal.fire({
-        icon: "error",
-        title: "Oops...",
-        text: "Something went wrong!",
-      });
-    } finally {
-      setLoading(false);
-    }
-  };
-
+  if (loading) {
+    return <p className="text-center mt-10">Loading...</p>;
+  }
   return (
-    <div className="flex justify-center items-start min-h-screen">
-      <div className="mr-12 bg-white p-8 rounded-lg shadow-2xl w-full max-w-sm">
-        <h1 className="text-2xl font-bold text-center mb-6">Tambah Prestasi</h1>
-        <form onSubmit={handleSubmit}>
-          <div className="mb-4">
-            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="nama_lengkap">
-              Nama Lengkap
-            </label>
-            <input
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-              id="nama_lengkap"
-              type="text"
-              name="nama_lengkap"
-              value={formData.nama_lengkap}
-              onChange={handleChange}
-              required
-            />
-          </div>
+    <div className="p-6 ml-3">
+      <div className="flex justify-between items-center mb-6 rounded-2xl py-5 px-20 bg-blue-500">
+        <h2 className="text-2xl font-bold">Data jalur Prestasi</h2>
+        <button
+          onClick={() => navigate("/TambahM1")}
+          className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded shadow"
+        >
+          + Tambah Data
+        </button>
+      </div>
 
-          
-          <div className="mb-4">
-            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="asal_sekolah">
-              Asal Sekolah
-            </label>
-            <input
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-              id="asal_sekolah"
-              type="text"
-              name="asal_sekolah"
-              value={formData.asal_sekolah}
-              onChange={handleChange}
-              required
-            />
-          </div>
-
-          
-          <div className="mb-4">
-            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="nik">
-              NIK
-            </label>
-            <input
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-              id="nik"
-              type="text"
-              name="nik"
-              value={formData.nik}
-              onChange={handleChange}
-              required
-            />
-          </div>
-
-          
-          <div className="mb-4">
-            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="nisn">
-              NISN
-            </label>
-            <input
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-              id="nisn"
-              type="text"
-              name="nisn"
-              value={formData.nisn}
-              onChange={handleChange}
-              required
-            />
-          </div>
-
-          
-          <div className="mb-6">
-            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="nilai">
-              Rata-rata
-            </label>
-            <input
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-              id="nilai"
-              type="text"
-              name="nilai"
-              value={formData.nilai}
-              onChange={handleChange}
-              required
-            />
-          </div>
-
-          
-          <div className="flex justify-between items-center">
-            <button
-              disabled={loading}
-              className="bg-blue-500 hover:bg-blue-700 disabled:bg-gray-400 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-              type="submit"
-            >
-              {loading ? "Loading..." : "Tambah"}
-            </button>
-
-            <Link
-              to="/D"
-              className="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-            >
-              Kembali
-            </Link>
-          </div>
-        </form>
+      <div className="overflow-x-auto bg-white shadow-md rounded-2xl">
+        <table className="table-auto w-full border-gray-300">
+          <thead className="bg-gray-200">
+            <tr className=" bg-blue-500">
+              <th className="">No</th>
+              <th className=" px-3 py-2">Nama Lengkap</th>
+              <th className=" px-3 py-2">Asal Sekolah</th>
+              <th className=" px-3 py-2">NIK</th>
+              <th className=" px-3 py-2">NISN</th>
+              <th className=" px-3 py-2">Rata-rata Nilai</th>
+              <th className=" px-3 py-2">Aksi</th>
+            </tr>
+          </thead>
+          <tbody>
+            {prestasi.length > 0 ? (
+              prestasi.map((item, index) => (
+                <tr
+                  key={item.id}
+                  className="hover:bg-gray-50 transition duration-200"
+                >
+                  <td className=" text-center">{index + 1}</td>
+                  <td className="text-center px-3 py-2">{item.nama_lengkap}</td>
+                  <td className="text-center px-3 py-2">{item.asal_sekolah}</td>
+                  <td className="text-center px-3 py-2">{item.nik}</td>
+                  <td className="text-center px-3 py-2">{item.nisn}</td>
+                  <td className="text-center px-3 py-2">{item.nilai}</td>
+                  <td className=" px-3 py-2 text-center">
+                     <button
+                    onClick={() => navigate(`/M1edit/${item.id}`)}
+                    className="px-3 py-1 bg-blue-500 text-white rounded hover:bg-blue-600 transition"
+                  >
+                    Edit
+                  </button>
+                    <button
+                      onClick={() => handleDelete(item.id)}a
+                      className="bg-red-500 hover:bg-red-700 text-white px-3 py-1 rounded"
+                    >
+                      Hapus
+                    </button>
+                  </td>
+                </tr>
+              ))
+            ) : (
+              <tr>
+                <td
+                  colSpan="7"
+                  className="text-center py-6 text-gray-500 italic"
+                >
+                  Belum ada data
+                </td>
+              </tr>
+            )}
+          </tbody>
+        </table>
       </div>
     </div>
   );

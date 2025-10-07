@@ -1,118 +1,115 @@
-import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import Sidnav from "./Sidnav";
 import axios from "axios";
-import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 
-function Dashboard() {
-  const [prestasi, setPrestasi] = useState([]);
+const Dashboard = () => {
+  const [jumlahPrestasi, setJumlahPrestasi] = useState(0);
+  const [jumlahZonasi, setJumlahZonasi] = useState(0);
+  const [jumlahAfirmasi, setJumlahAfirmasi] = useState(0);
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
 
   useEffect(() => {
-    const fetchData = async () => {
+    const fetchAllData = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/prestasi");
-        setPrestasi(response.data);
+        const [resPrestasi, resZonasi, resAfirmasi] = await Promise.all([
+          axios.get("http://localhost:5000/prestasi"),
+          axios.get("http://localhost:5000/zonasi"),
+          axios.get("http://localhost:5000/afirmasi"),
+        ]);
+
+        setJumlahPrestasi(resPrestasi.data.length);
+        setJumlahZonasi(resZonasi.data.length);
+        setJumlahAfirmasi(resAfirmasi.data.length);
       } catch (error) {
-        console.error("Gagal ambil data prestasi:", error);
+        console.error("Gagal mengambil data:", error);
       } finally {
         setLoading(false);
       }
     };
 
-    fetchData();
+    fetchAllData();
   }, []);
 
-  const handleDelete = async (id) => {
-    Swal.fire({
-      title: "Yakin hapus?",
-      text: "Data akan hilang permanen!",
-      icon: "warning",
-      showCancelButton: true,
-      confirmButtonText: "Ya, hapus!",
-      cancelButtonText: "Batal",
-    }).then(async (result) => {
-      if (result.isConfirmed) {
-        try {
-          await axios.delete(`http://localhost:5000/prestasi/${id}`);
-          const newData = prestasi.filter((item) => item.id !== id);
-          setPrestasi(newData);
-          Swal.fire("Deleted!", "Data berhasil dihapus.", "success");
-        } catch (err) {
-          console.error("Gagal menghapus data:", err);
-          Swal.fire("Error!", "Gagal menghapus data.", "error");
-        }
-      }
-    });
-  };
-
-  if (loading) {
-    return <p className="text-center mt-10">Loading...</p>;
-  }
-
   return (
-    <div className="p-6 pl-0">
-      <div className="flex justify-between items-center mb-6">
-        <h2 className="text-2xl font-bold">Data jalur Prestasi</h2>
-        <button
-          onClick={() => navigate("/M1")}
-          className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded shadow"
-        >
-          Tambah Data
-        </button>
-      </div>
+    <div
+      className="flex"
+    >
+      <Sidnav />
+      <div className="flex-1 p-6 ml-60">
+        <h1 className="text-3xl font-bold text-center mb-6 text-blue-700">
+          DASHBOARD
+        </h1>
 
-      <div className="overflow-x-auto bg-white shadow-md">
-        <table className="table-auto w-full border border-gray-300">
-          <thead className="bg-gray-200">
-            <tr>
-              <th className="border">No</th>
-              <th className="border px-3 py-2">Nama Lengkap</th>
-              <th className="border px-3 py-2">Asal Sekolah</th>
-              <th className="border px-3 py-2">NIK</th>
-              <th className="border px-3 py-2">NISN</th>
-              <th className="border px-3 py-2">Rata-rata Nilai</th>
-              <th className="border px-3 py-2">Aksi</th>
-            </tr>
-          </thead>
-          <tbody>
-            {prestasi.length > 0 ? (
-              prestasi.map((item, index) => (
-                <tr
-                  key={item.id}
-                  className="hover:bg-gray-50 transition duration-200"
-                >
-                  <td className="border text-center">{index + 1}</td>
-                  <td className="border px-3 py-2">{item.nama_lengkap}</td>
-                  <td className="border px-3 py-2">{item.asal_sekolah}</td>
-                  <td className="border px-3 py-2">{item.nik}</td>
-                  <td className="border px-3 py-2">{item.nisn}</td>
-                  <td className="border px-3 py-2">{item.nilai}</td>
-                  <td className="border px-3 py-2 text-center">
-                    <button
-                      onClick={() => handleDelete(item.id)}
-                      className="bg-red-500 hover:bg-red-700 text-white px-3 py-1 rounded"
-                    >
-                      Hapus
-                    </button>
-                  </td>
-                </tr>
-              ))
-            ) : (
-              <tr>
-                <td
-                  colSpan="7"
-                  className="text-center py-6 text-gray-500 italic"
-                >
-                  Belum ada data
-                </td>
-              </tr>
-            )}
-          </tbody>
-        </table>
+        {loading ? (
+          <p className="text-center mt-10">Loading...</p>
+        ) : (
+          <div className="grid grid-cols-3 gap-4 mb-8">
+            <div className="p-4 shadow rounded text-center">
+              <h2>Jalur Prestasi</h2>
+              <p className="text-green-600 text-2xl font-bold">
+                {jumlahPrestasi}
+              </p>
+            </div>
+            <div className="p-4 shadow rounded text-center">
+              <h2>Jalur Zonasi</h2>
+              <p className="text-blue-600 text-2xl font-bold">{jumlahZonasi}</p>
+            </div>
+            <div className="p-4 shadow rounded text-center">
+              <h2>Jalur Afirmasi</h2>
+              <p className="text-yellow-500 text-2xl font-bold">
+                {jumlahAfirmasi}
+              </p>
+            </div>
+            <div className="p-4 shadow rounded text-center">
+              <h1 className="text-2xl text-green-600 font-bold">
+                Jalur Prestasi
+              </h1>
+              <p className="mt-10">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere,
+                quis consequatur porro eos deleniti mollitia!
+              </p>
+              <button
+                onClick={() => navigate("/TambahM1")}
+                className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded shadow mt-20"
+              >
+                Daftar
+              </button>
+            </div>
+            <div className="p-4 shadow rounded text-center">
+              <h1 className="text-2xl text-blue-600 font-bold">Jalur Zonasi</h1>
+              <p className="mt-10">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere,
+                quis consequatur porro eos deleniti mollitia!
+              </p>
+              <button
+                onClick={() => navigate("/TambahM2")}
+                className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded shadow mt-20"
+              >
+                Daftar
+              </button>
+            </div>
+            <div className="p-4 shadow rounded text-center">
+              <h1 className="text-2xl text-yellow-500 font-bold">
+                Jalur Afirmasi
+              </h1>
+              <p className="mt-10">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere,
+                quis consequatur porro eos deleniti mollitia!
+              </p>
+              <button
+                onClick={() => navigate("/TambahM3")}
+                className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded shadow mt-20"
+              >
+                Daftar
+              </button>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );
-}
+};
 
 export default Dashboard;
