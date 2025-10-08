@@ -58,7 +58,11 @@ function Tambahmenu2() {
   };
 
   return (
-    <div className="flex justify-center items-start min-h-screen">
+    <div className="flex justify-center items-center min-h-screen bg-cover bg-center bg-no-repeat"
+    style={{
+            backgroundImage:
+              "url(https://i.pinimg.com/736x/a6/c1/60/a6c1600f207e8a0ae13e870b88b93da7.jpg)",
+          }}>
       <div className="mr-12 bg-white p-8 rounded-lg shadow-2xl w-full max-w-sm">
         <h1 className="text-2xl font-bold text-center mb-6">Tambah Data</h1>
         <form onSubmit={handleSubmit}>

@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 function Homepage() {
   return (
     <div className="min-h-screen bg-gradient-to-r from-sky-400 to-blue-600">
-      <div className="bg-blue-600 rounded-b-3xl p-4 shadow-lg grid-cols-3 gap-6">
+      <div className="bg-blue-600 rounded-b-3xl p-4 shadow-lg gap-6">
         <div className="flex items-center gap-3">
           <img src={Lbinus} alt="Logo" className="w-13 h-13 rounded-full" />
           <div>
@@ -13,9 +13,16 @@ function Homepage() {
               SMK BINA NUSANTARA
             </h1>
           </div>
+          <div className="ml-227">
+        <Link to="/F">
+          <button className="px-6 py-3 bg-white text-indigo-600 ml-25 font-semibold rounded-xl shadow-lg hover:bg-gray-200 transition">
+            Daftar
+          </button>
+        </Link>
+      </div>
         </div>
       </div>
-      <div className="flex gap-6 scroll-auto">
+      <div className="flex gap-6">
         <div
           className="mt-12 ml-20 p-8 rounded-lg shadow-md w-full max-w-sm"
           style={{
@@ -114,7 +121,7 @@ function Homepage() {
         </p>
       </div>
       <div>
-        <h1 className="text-5xl mt-10 font-bold text-center" id="#pro">
+        <h1 className="text-5xl mt-10 font-bold text-center">
           Syarat pendaftaran
         </h1>
       </div>

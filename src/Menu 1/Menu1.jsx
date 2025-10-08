@@ -27,7 +27,7 @@ function Menu1() {
   const handleDelete = async (id) => {
     Swal.fire({
       title: "Yakin hapus?",
-      text: "Data akan hilang permanen!",
+      text: "Data akan hilang😜!",
       icon: "warning",
       showCancelButton: true,
       confirmButtonText: "Ya, hapus!",
@@ -98,7 +98,7 @@ function Menu1() {
                   </button>
                     <button
                       onClick={() => handleDelete(item.id)}a
-                      className="bg-red-500 hover:bg-red-700 text-white px-3 py-1 rounded"
+                      className="bg-red-500 hover:bg-red-700 text-white px-3 py-1 rounded ml-4"
                     >
                       Hapus
                     </button>

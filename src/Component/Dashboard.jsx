@@ -33,9 +33,7 @@ const Dashboard = () => {
   }, []);
 
   return (
-    <div
-      className="flex"
-    >
+    <div className="flex">
       <Sidnav />
       <div className="flex-1 p-6 ml-60">
         <h1 className="text-3xl font-bold text-center mb-6 text-blue-700">
@@ -46,17 +44,17 @@ const Dashboard = () => {
           <p className="text-center mt-10">Loading...</p>
         ) : (
           <div className="grid grid-cols-3 gap-4 mb-8">
-            <div className="p-4 shadow rounded text-center">
+            <div className="p-4 shadow rounded text-center bg-amber-500">
               <h2>Jalur Prestasi</h2>
               <p className="text-green-600 text-2xl font-bold">
                 {jumlahPrestasi}
               </p>
             </div>
-            <div className="p-4 shadow rounded text-center">
+            <div className="p-4 shadow rounded text-center bg-amber-500">
               <h2>Jalur Zonasi</h2>
               <p className="text-blue-600 text-2xl font-bold">{jumlahZonasi}</p>
             </div>
-            <div className="p-4 shadow rounded text-center">
+            <div className="p-4 shadow rounded text-center bg-amber-500">
               <h2>Jalur Afirmasi</h2>
               <p className="text-yellow-500 text-2xl font-bold">
                 {jumlahAfirmasi}
@@ -67,12 +65,17 @@ const Dashboard = () => {
                 Jalur Prestasi
               </h1>
               <p className="mt-10">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere,
-                quis consequatur porro eos deleniti mollitia!
+                Jalur prestasi adalah jalur penerimaan peserta didik baru yang
+                didasarkan pada pencap aian prestasi akademik maupun nonakademik
+                siswa. Prestasi tersebut dapat berupa nilai rapor yang tinggi,
+                piagam penghargaan, sertifikat lomba, atau kejuaraan di bidang
+                akademik, olahraga, seni, dan lain-lain. Jalur ini memberikan
+                kesempatan b agi siswa berprestasi untuk diterima di sekolah
+                tanpa mempertimbangkan jarak tempat tinggal.
               </p>
               <button
                 onClick={() => navigate("/TambahM1")}
-                className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded shadow mt-20"
+                className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded shadow mt-5"
               >
                 Daftar
               </button>
@@ -80,12 +83,16 @@ const Dashboard = () => {
             <div className="p-4 shadow rounded text-center">
               <h1 className="text-2xl text-blue-600 font-bold">Jalur Zonasi</h1>
               <p className="mt-10">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere,
-                quis consequatur porro eos deleniti mollitia!
+                Jalur zonasi adalah jalur penerimaan peserta didik baru yang
+                didasarkan pada jarak tempat tinggal siswa dengan sekolah
+                tujuan. Penentuan zonasi dilakukan oleh pemerintah daerah untuk
+                memastikan pemerataan akses pendidikan dan mengurangi
+                kesenjangan antarwilayah. Melalui jalur ini, siswa yang tinggal
+                paling dekat dengan sekolah memiliki prioritas diterima.
               </p>
               <button
                 onClick={() => navigate("/TambahM2")}
-                className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded shadow mt-20"
+                className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded shadow mt-10"
               >
                 Daftar
               </button>
@@ -95,12 +102,15 @@ const Dashboard = () => {
                 Jalur Afirmasi
               </h1>
               <p className="mt-10">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere,
-                quis consequatur porro eos deleniti mollitia!
+                Jalur afirmasi adalah jalur penerimaan peserta didik baru yang
+                diperuntukkan bagi siswa dari keluarga kurang mampu atau
+                kelompok rentan. Siswa yang mengikuti jalur ini biasanya
+                memiliki Kartu Indonesia Pintar (KIP), PKH, DTKS, atau surat
+                keterangan tidak mampu dari pemerintah setempat.
               </p>
               <button
                 onClick={() => navigate("/TambahM3")}
-                className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded shadow mt-20"
+                className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded mt-16"
               >
                 Daftar
               </button>

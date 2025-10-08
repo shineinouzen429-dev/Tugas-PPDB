@@ -7,6 +7,38 @@
       "nik": "83432942932384",
       "nisn": "434826",
       "nilai": "88"
+    },
+    {
+      "id": "aa98",
+      "nama_lengkap": "ayyas assadullah bilqis",
+      "asal_sekolah": "mts uswatun",
+      "nik": "83432942932384",
+      "nisn": "434826",
+      "nilai": "88"
+    },
+    {
+      "id": "aa98",
+      "nama_lengkap": "ayyas assadullah bilqis",
+      "asal_sekolah": "mts uswatun",
+      "nik": "83432942932384",
+      "nisn": "434826",
+      "nilai": "88"
+    },
+    {
+      "id": "5a04",
+      "nama_lengkap": "ayyas assadullah bilqis",
+      "asal_sekolah": "mts uswatun hasanah",
+      "nik": "83432942932384",
+      "nisn": "434826",
+      "nilai": "78"
+    },
+    {
+      "id": "3bbb",
+      "nama_lengkap": "ayyas assadullah bilqis",
+      "asal_sekolah": "mts uswatun hasanah",
+      "nik": "83432942932384",
+      "nisn": "434826",
+      "nilai": "100"
     }
   ],
   "zonasi": [
@@ -17,7 +49,81 @@
       "jarak": "500meter",
       "nisn": "434826",
       "nilai": "100"
+    },
+    {
+      "id": "2b3c",
+      "nama_lengkap": "ayyas assadullah bilqis",
+      "alamat": "krapyak subali",
+      "jarak": "500meter",
+      "nisn": "434826",
+      "nilai": "100"
+    },
+    {
+      "id": "2b3c",
+      "nama_lengkap": "ayyas assadullah bilqis",
+      "alamat": "krapyak subali",
+      "jarak": "500meter",
+      "nisn": "434826",
+      "nilai": "100"
+    },
+    {
+      "id": "2b3c",
+      "nama_lengkap": "ayyas assadullah bilqis",
+      "alamat": "krapyak subali",
+      "jarak": "500meter",
+      "nisn": "434826",
+      "nilai": "100"
+    },
+    {
+      "id": "2b3c",
+      "nama_lengkap": "ayyas assadullah bilqis",
+      "alamat": "krapyak subali",
+      "jarak": "500meter",
+      "nisn": "434826",
+      "nilai": "100"
+    },
+    {
+      "id": "2b3c",
+      "nama_lengkap": "ayyas assadullah bilqis",
+      "alamat": "krapyak subali",
+      "jarak": "500meter",
+      "nisn": "434826",
+      "nilai": "100"
+    },
+    {
+      "id": "2b3c",
+      "nama_lengkap": "ayyas assadullah bilqis",
+      "alamat": "krapyak subali",
+      "jarak": "500meter",
+      "nisn": "434826",
+      "nilai": "100"
+    },
+    {
+      "id": "2b3c",
+      "nama_lengkap": "ayyas assadullah bilqis",
+      "alamat": "krapyak subali",
+      "jarak": "500meter",
+      "nisn": "434826",
+      "nilai": "100"
+    },
+    {
+      "id": "2b3c",
+      "nama_lengkap": "ayyas assadullah bilqis",
+      "alamat": "krapyak subali",
+      "jarak": "500meter",
+      "nisn": "434826",
+      "nilai": "100"
     }
   ],
-  "afirmasi": []
+  "afirmasi": [
+    {
+      "id": "0eb7",
+      "nama_lengkap": "ayyas assadullah bilqis",
+      "keterangan_afirmasi": "phk",
+      "jarak": "",
+      "nisn": "434826",
+      "nilai": "78",
+      "bukti_dokumen": "lenkap"
+    }
+  ]
 }

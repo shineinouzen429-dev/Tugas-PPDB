@@ -75,6 +75,12 @@ function Editmenu2() {
     if (loading) return <p className="text-center mt-10">Loading data</p>
     
     return (
+      <div className="bg-no-repeat bg-cover bg-center min-h-screen"
+      style={{
+            backgroundImage:
+              "url(https://i.pinimg.com/736x/4a/ee/99/4aee997b576e195fc60b4c06e640dcdf.jpg)",
+          }}>
+
      <div className="container mx-auto p-4 max-w-lg">
         <h1 className="text-3xl font-bold mb-6 text-center">
             Edit Data
@@ -83,6 +89,7 @@ function Editmenu2() {
              <div className="mb-4">
                 <label htmlFor="nama_lengkap">nama_lengkap: </label>
                 <input
+                className="border-0 border-b-2 border-black focus:border-black focus:outline-none w-full py-2 px-0 leading-tight"
                   id="nama_lengkap"
                   name="nama_lengkap"
                   type="text"
@@ -93,6 +100,7 @@ function Editmenu2() {
               <div className="mb-4">
                 <label htmlFor="alamat">alamat: </label>
                 <input
+                className="border-0 border-b-2 border-black focus:border-black focus:outline-none w-full py-2 px-0 leading-tight"
                   id="alamat"
                   name="alamat"
                   type="text"
@@ -103,16 +111,18 @@ function Editmenu2() {
               <div className="mb-4">
                 <label htmlFor="jarak">jarak: </label>
                 <input
+                className="border-0 border-b-2 border-black focus:border-black focus:outline-none w-full py-2 px-0 leading-tight"
                   id="jarak"
                   name="jarak"
                   type="text"
                   value={formData.jarak}
                   onChange={handleChange}
-                />
+                  />
              </div>
               <div className="mb-4">
                 <label htmlFor="nisn">nisn: </label>
                 <input
+                className="border-0 border-b-2 border-black focus:border-black focus:outline-none w-full py-2 px-0 leading-tight"
                   id="nisn"
                   name="nisn"
                   type="text"
@@ -123,6 +133,7 @@ function Editmenu2() {
               <div className="mb-4">
                 <label htmlFor="nilai">nilai: </label>
                 <input
+                className="border-0 border-b-2 border-black focus:border-black focus:outline-none w-full py-2 px-0 leading-tight"
                   id="nilai"
                   name="nilai"
                   type="text"
@@ -149,6 +160,7 @@ function Editmenu2() {
             </div>
         </form>
      </div>   
+                </div>
     )
 }
 

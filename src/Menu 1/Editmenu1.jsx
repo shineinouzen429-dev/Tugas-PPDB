@@ -47,7 +47,7 @@ function Editmenu1() {
   e.preventDefault();
 
   Swal.fire({
-    title: "Do you want to save the changes?",
+    title: "Yakin mau di save🤨",
     showDenyButton: true,
     showCancelButton: true,
     confirmButtonText: "Save",
@@ -75,14 +75,21 @@ function Editmenu1() {
     if (loading) return <p className="text-center mt-10">Loading data</p>
     
     return (
+    <div className="bg-cover bg-center bg-no-repeat min-h-screen"
+     style={{
+            backgroundImage:
+              "url(https://i.pinimg.com/736x/4a/ee/99/4aee997b576e195fc60b4c06e640dcdf.jpg)",
+          }}>
      <div className="container mx-auto p-4 max-w-lg">
         <h1 className="text-3xl font-bold mb-6 text-center">
             Edit Data
         </h1>
-        <form onSubmit={handleSubmit} className="bg-white shadow-md rounded-lg p-6">
+        <form onSubmit={handleSubmit} className="shadow-md rounded-lg p-6"
+       >
              <div className="mb-4">
-                <label htmlFor="nama_lengkap">nama_lengkap: </label>
+                <label htmlFor="nama_lengkap" className="block text-sm font-bold mb-2">Nama lengkap: </label>
                 <input
+                className="border-0 border-b-2 border-black focus:border-black focus:outline-none w-full py-2 px-0 leading-tight"
                   id="nama_lengkap"
                   name="nama_lengkap"
                   type="text"
@@ -91,8 +98,9 @@ function Editmenu1() {
                 />
                </div>
               <div className="mb-4">
-                <label htmlFor="asal_sekolah">asal_sekolah: </label>
+                <label htmlFor="asal_sekolah" className="block text-sm font-bold mb-2">Asal sekolah: </label>
                 <input
+                className="border-0 border-b-2 border-black focus:border-black focus:outline-none w-full py-2 px-0 leading-tight"
                   id="asal_sekolah"
                   name="asal_sekolah"
                   type="text"
@@ -101,8 +109,9 @@ function Editmenu1() {
                 />
                </div>
               <div className="mb-4">
-                <label htmlFor="nik">nik: </label>
+                <label htmlFor="nik" className="block text-sm font-bold mb-2">NIK: </label>
                 <input
+                className="border-0 border-b-2 border-black focus:border-black focus:outline-none w-full py-2 px-0 leading-tight"
                   id="nik"
                   name="nik"
                   type="text"
@@ -111,8 +120,9 @@ function Editmenu1() {
                 />
              </div>
               <div className="mb-4">
-                <label htmlFor="nisn">nisn: </label>
+                <label htmlFor="nisn" className="block text-sm font-bold mb-2">NISN: </label>
                 <input
+                className="border-0 border-b-2 border-black focus:border-black focus:outline-none w-full py-2 px-0 leading-tight"
                   id="nisn"
                   name="nisn"
                   type="text"
@@ -121,8 +131,9 @@ function Editmenu1() {
                 />
              </div>
               <div className="mb-4">
-                <label htmlFor="nilai">nilai: </label>
+                <label htmlFor="nilai" className="block text-sm font-bold mb-2">Rata-rata: </label>
                 <input
+                className="border-0 border-b-2 border-black focus:border-black focus:outline-none w-full py-2 px-0 leading-tight"
                   id="nilai"
                   name="nilai"
                   type="text"
@@ -148,7 +159,8 @@ function Editmenu1() {
                 </button>
             </div>
         </form>
-     </div>   
+     </div>
+     </div>
     )
 }
 
